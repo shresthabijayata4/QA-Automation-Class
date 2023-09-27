@@ -1,16 +1,29 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.*;
+
+import java.time.Duration;
+import java.util.List;
+
+
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.Scanner;
+        import java.util.Scanner;
 
-public class login {
-//    static WebDriver driver = new ChromeDriver();
+public class testCaseSwagWeb {
+    //    static WebDriver driver = new ChromeDriver();
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+
 
 
         driver.manage().window().maximize();
@@ -19,11 +32,11 @@ public class login {
 
 //        -------Invalid username invalid password -------
 
-        userDetails("test", "test", driver);
-        userDetails("standard_user", "test", driver);
-        userDetails("locked_out_user", "", driver);
-        userDetails("hello_test", "secret_sauce", driver);
-        System.out.println("Logged in");
+//        userDetails("test", "test", driver);
+//        userDetails("standard_user", "test", driver);
+//        userDetails("locked_out_user", "", driver);
+//        userDetails("hello_test", "secret_sauce", driver);
+//
         userDetails("standard_user", "secret_sauce", driver);
 
 
@@ -33,7 +46,7 @@ public class login {
 
 
 
-
+//
         listOutLink(driver);
 
 //        dropdownSelect(1, driver);
@@ -47,6 +60,19 @@ public class login {
 //        cart1.click();
 
 
+    }
+    public static void userDetails( String user, String pass, WebDriver driver){
+        String placeholderUsername = "[placeholder='Username']";
+        String placeholderPassword = "[placeholder='Password']";
+        WebElement userName = driver.findElement(By.cssSelector(placeholderUsername));
+        WebElement password = driver.findElement(By.cssSelector(placeholderPassword));
+        WebElement Error = driver.findElement(By.className("error-message-container"));
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+
+        getUserDetails(userName, password, user, pass);
+        loginButton.click();
+        System.out.println("Error message" +Error.getText());
+        clearForm(userName, password, Error);
     }
 
     public static void getUserDetails(WebElement userName, WebElement password, String User, String Pass) {
@@ -98,19 +124,7 @@ public class login {
 
     }
 
-    public static void userDetails( String user, String pass, WebDriver driver){
-        String placeholderUsername = "[placeholder='Username']";
-        String placeholderPassword = "[placeholder='Password']";
-        WebElement userName = driver.findElement(By.cssSelector(placeholderUsername));
-        WebElement password = driver.findElement(By.cssSelector(placeholderPassword));
-        WebElement Error = driver.findElement(By.className("error-message-container"));
-        WebElement loginButton = driver.findElement(By.id("login-button"));
 
-        getUserDetails(userName, password, user, pass);
-        loginButton.click();
-        System.out.println("Error message" +Error.getText());
-        clearForm(userName, password, Error);
-    }
 
 //    public static void logout() {
 //
@@ -133,3 +147,4 @@ public class login {
 
 
 }
+
