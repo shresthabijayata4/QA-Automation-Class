@@ -1,16 +1,22 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.List;
 
-public class list_view_ecommerce {
+
+import org.openqa.selenium.By;
+        import org.openqa.selenium.Keys;
+        import org.openqa.selenium.WebDriver;
+        import org.openqa.selenium.WebElement;
+        import org.openqa.selenium.chrome.ChromeDriver;
+        import org.openqa.selenium.support.ui.Select;
+        import org.openqa.selenium.support.ui.Wait;
+        import org.openqa.selenium.support.ui.WebDriverWait;
+
+        import java.time.Duration;
+        import java.util.List;
+
+public class final_automation_code_ecommerce {
 
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
@@ -176,13 +182,13 @@ public class list_view_ecommerce {
             String fullText = link.getText();
             String textToExclude = "Add to cart";
             String modifiedText = fullText.replace(textToExclude, "");
-            
+
             System.out.println(modifiedText);
         }
 
     }
 
-        public static void logout(WebDriver driver) {
+    public static void logout(WebDriver driver) {
 
         WebElement menuBurger = driver.findElement(By.id("react-burger-menu-btn"));
         menuBurger.click();
@@ -191,12 +197,14 @@ public class list_view_ecommerce {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-       WebElement logout = driver.findElement(By.id("logout_sidebar_link"));
+        WebElement logout = driver.findElement(By.id("logout_sidebar_link"));
         logout.click();
         System.out.println("Logged Out");
 
 
-       logout.click();
+        logout.click();
 
     }
 }
+
+
